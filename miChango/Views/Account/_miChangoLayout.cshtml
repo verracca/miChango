@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>miChango</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- libreria de jaquery fancebox 3 -->
+    <link rel="shortcut icon" href="~/Content/img/miChangoCarrito.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    @*<link rel="stylesheet" href="css/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="css/style.css">*@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-4 offset-md-2">
+                <div class="logo">
+                    <img src="~/Content/img/miChangoCarrito.png" alt="carrito" width="95">
+                </div>
+                <div class="text display-5 text-center">
+                    <h1>Tu lista de compras </h1>
+                </div>
+                <div>
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="col-12 col-12 col-md-4 mt-md-5 foto m-blank p-blank">
+                <img src="~/Content/img/Foto1.jpg" alt="alimentos" width="380">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
