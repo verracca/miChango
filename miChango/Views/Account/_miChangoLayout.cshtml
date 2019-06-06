@@ -23,6 +23,9 @@
                 </div>
                 <div class="text display-5 text-center">
                     <h1>Tu lista de compras </h1>
+                    <br>
+                    <p>@ViewBag.info</p>
+                    <hr>
                 </div>
                 <div>
                     @RenderBody()
@@ -33,6 +36,7 @@
             </div>
         </div>
     </div>
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>
