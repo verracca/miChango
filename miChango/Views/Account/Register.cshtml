@@ -1,39 +1,41 @@
 ﻿@model miChango.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    Layout = "~/Views/Account/_miChangoLayout.cshtml";
+    ViewBag.info = "Comienza creando una cuenta y uniendote a miChango!";
 }
-
-<h2>@ViewBag.Title.</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
+    @*<div class="text display-5 text-center">
+            <br>
+            <p>Comienza creando una cuenta y uniendote a miChango!</p>
+            <hr>
+        </div>*@
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Ingrese su email" })
+        <small id="emailHelp" class="form-text text-muted">Te prometemos que no te mandaremos correo no deseado!</small>
+
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
+
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Ingrese su contraseña" })
+
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
+
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Vuelva a ingresar su contraseña" })
+
     </div>
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+        <div class="button">
+            <button type="submit" class="btn btn-primary">Registrarse</button>
         </div>
     </div>
+    <p>
+        @Html.ActionLink("Ya tienes cuenta? Logueate!", "Login")
+    </p>
 }
 
 @section Scripts {
