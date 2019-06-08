@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using miChango.Models;
+using System.Collections.Generic;
 
 namespace miChango.Controllers
 {
@@ -151,7 +152,9 @@ namespace miChango.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                // creamos una lista al registrar al usuario y se la agregamos al constructor del mismo
+                var lista = new ShoppingList();
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ShoppingList = lista };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

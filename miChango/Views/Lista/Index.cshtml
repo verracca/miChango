@@ -1,0 +1,73 @@
+﻿@model miChango.Models.ShowShoppingListViewModel
+
+@{
+    ViewBag.Title = "Index";
+
+    var listaCompleta = Model.defaultList;
+
+    var productosUsuario = Model.userList.Products;
+
+}
+
+<section class="section my-0">
+    <div class="container-fluid my-0">
+        <div class="row">
+            <div class="col-12">
+                <div id="Supermercado" class="tabcontent ">
+                    <div class="container-fluid contenedor">
+                        <div class="row">
+                            <div class="col-7 corte">
+                                <!--Empieza SUPER-->
+                                <h2 class="text-dark">Productos</h2>
+                                <div class="cards-list">
+                                    <!--empieza lista 1-->
+                                    @foreach (var item in listaCompleta)
+                                    {
+                                        // on click creamos un nuevo producto, le mandamos el nombre y la imagen como parametros
+                                        <a href="@Url.Action("Create", "Producto", new { Name=item.Name, Image=item.Image })">
+                                            <div class="card 2">
+                                                <div class="card_image">
+                                                    <img src="~/Content/img/iconos/@Html.DisplayFor(modelItem => item.Image)" />
+                                                </div>
+                                                <div class="card_title title-dark">
+                                                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                                                </div>
+                                            </div>                                            
+                                        </a>
+                                    }
+
+                                </div>
+                                <!--termina lista 1-->
+                            </div>
+
+                            <div class="col-5 lista">
+                                <!--Poner para que se vayan agregando en filas d 3-->
+                                <h2>Mi lista</h2>
+                                <div class="cards-list">
+                                    <!--empieza lista 1-->
+                                    @foreach (var item in productosUsuario)
+                                    {
+                                        // on click creamos un nuevo producto, le mandamos el nombre y la imagen como parametros
+                                        <a href="@Url.Action("Delete", "Producto", new { id=item.ProductID })">
+                                            <div class="card 2">
+                                                <div class="card_image">
+                                                    <img src="~/Content/img/iconos/@Html.DisplayFor(modelItem => item.Image)" />
+                                                </div>
+                                                <div class="card_title title-dark">
+                                                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    }
+
+                                </div>
+                                <!--termina lista 1-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

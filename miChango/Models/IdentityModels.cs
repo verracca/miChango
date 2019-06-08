@@ -16,6 +16,11 @@ namespace miChango.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        // Para que el usuario tenga una lista hacemos igual que hicimos con el modelo de Producto
+        public int ShoppingListID { get;set;}
+
+        public virtual ShoppingList ShoppingList { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +34,9 @@ namespace miChango.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<miChango.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<miChango.Models.ShoppingList> Listas { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -159,9 +162,6 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -171,13 +171,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ListaController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ShoppingListModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -189,10 +190,68 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\agregarPersona.png" />
+    <Content Include="Content\img\foot.png" />
+    <Content Include="Content\img\footer.png" />
     <Content Include="Content\img\Foto1.jpg" />
     <Content Include="Content\img\Fotos.txt" />
+    <Content Include="Content\img\iconos\aji.gif" />
+    <Content Include="Content\img\iconos\anana.gif" />
+    <Content Include="Content\img\iconos\arandanos.gif" />
+    <Content Include="Content\img\iconos\bacon.gif" />
+    <Content Include="Content\img\iconos\baguette.gif" />
+    <Content Include="Content\img\iconos\banana.gif" />
+    <Content Include="Content\img\iconos\berenjena.gif" />
+    <Content Include="Content\img\iconos\brocoli.gif" />
+    <Content Include="Content\img\iconos\cebolla.gif" />
+    <Content Include="Content\img\iconos\cereza.gif" />
+    <Content Include="Content\img\iconos\cookies.gif" />
+    <Content Include="Content\img\iconos\cordero.gif" />
+    <Content Include="Content\img\iconos\crema.gif" />
+    <Content Include="Content\img\iconos\croissant.gif" />
+    <Content Include="Content\img\iconos\donuts.gif" />
+    <Content Include="Content\img\iconos\filete.gif" />
+    <Content Include="Content\img\iconos\footer.png" />
     <Content Include="Content\img\iconos\FrutasVerduras\frutas completo.jpg" />
     <Content Include="Content\img\iconos\FrutasVerduras\frutas completo.png" />
+    <Content Include="Content\img\iconos\frutilla.gif" />
+    <Content Include="Content\img\iconos\gambas.gif" />
+    <Content Include="Content\img\iconos\helado.gif" />
+    <Content Include="Content\img\iconos\huevos.gif" />
+    <Content Include="Content\img\iconos\kiwi.gif" />
+    <Content Include="Content\img\iconos\langosta.gif" />
+    <Content Include="Content\img\iconos\leche.gif" />
+    <Content Include="Content\img\iconos\lecheSoja.gif" />
+    <Content Include="Content\img\iconos\limon.gif" />
+    <Content Include="Content\img\iconos\magdalenas.gif" />
+    <Content Include="Content\img\iconos\manteca.gif" />
+    <Content Include="Content\img\iconos\margarina.gif" />
+    <Content Include="Content\img\iconos\mascarpone.gif" />
+    <Content Include="Content\img\iconos\melon.gif" />
+    <Content Include="Content\img\iconos\miChangoLogo.png" />
+    <Content Include="Content\img\iconos\morron.gif" />
+    <Content Include="Content\img\iconos\naranja.gif" />
+    <Content Include="Content\img\iconos\palta.gif" />
+    <Content Include="Content\img\iconos\pan.gif" />
+    <Content Include="Content\img\iconos\pancho.gif" />
+    <Content Include="Content\img\iconos\panPancho.gif" />
+    <Content Include="Content\img\iconos\paty.gif" />
+    <Content Include="Content\img\iconos\pepino.gif" />
+    <Content Include="Content\img\iconos\pera.gif" />
+    <Content Include="Content\img\iconos\pescado.gif" />
+    <Content Include="Content\img\iconos\pizza.gif" />
+    <Content Include="Content\img\iconos\pollo.gif" />
+    <Content Include="Content\img\iconos\queso.gif" />
+    <Content Include="Content\img\iconos\quesoFeta.gif" />
+    <Content Include="Content\img\iconos\quesoRallado.gif" />
+    <Content Include="Content\img\iconos\salchicha.gif" />
+    <Content Include="Content\img\iconos\sandia.gif" />
+    <Content Include="Content\img\iconos\tarta.gif" />
+    <Content Include="Content\img\iconos\torta.gif" />
+    <Content Include="Content\img\iconos\tostada.gif" />
+    <Content Include="Content\img\iconos\uva.gif" />
+    <Content Include="Content\img\iconos\wafles.gif" />
+    <Content Include="Content\img\iconos\yogurt.gif" />
+    <Content Include="Content\img\iconos\zanahoria.gif" />
     <Content Include="Content\img\miChangoCarrito.png" />
     <Content Include="Content\img\miChangoLogo.png" />
     <Content Include="favicon.ico" />
@@ -252,8 +311,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -267,12 +324,6 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\_miChangoLayout.cshtml" />
@@ -286,6 +337,17 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Lista\Create.cshtml" />
+    <Content Include="Views\Lista\Delete.cshtml" />
+    <Content Include="Views\Lista\Details.cshtml" />
+    <Content Include="Views\Lista\Edit.cshtml" />
+    <Content Include="Views\Lista\Index.cshtml" />
+    <Content Include="Views\Producto\Create.cshtml" />
+    <Content Include="Views\Producto\Delete.cshtml" />
+    <Content Include="Views\Producto\Details.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Lista\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
