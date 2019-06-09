@@ -151,7 +151,8 @@ namespace miChango.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var lista = new ShoppingList();
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, list = lista };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

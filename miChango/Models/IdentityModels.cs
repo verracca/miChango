@@ -16,6 +16,8 @@ namespace miChango.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public ShoppingList list {get;set;}
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +31,9 @@ namespace miChango.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<miChango.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<miChango.Models.ShoppingList> Listas { get; set; }
     }
 }

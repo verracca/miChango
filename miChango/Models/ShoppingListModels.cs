@@ -4,12 +4,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace miChango.Models
 {
-    public class Lista
+    public class ShowShoppingListViewModel
+    {
+        public ShoppingList defaultList { get; set; }
+        public ShoppingList userList { get; set; }
+    }
+
+    public class ShoppingList
     {
         [Key]
         public int Id { get; set; }
-        public ICollection<Product> Products { get; set; }
-
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 
     public class Product
