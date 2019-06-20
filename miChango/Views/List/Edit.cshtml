@@ -27,7 +27,7 @@
 
         @foreach( var product in Model.defaultList.Products)
         {
-            <li>@product.Name</li>
+            @Html.ActionLink(@product.Name, "Add", "Product", @product.Name)
         }
 
         @*@Html.HiddenFor(model => model.Id)*@
