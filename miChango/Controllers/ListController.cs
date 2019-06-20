@@ -101,7 +101,6 @@ namespace miChango.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.allProducts = defaultList;
             var viewmodel = new ShowShoppingListViewModel() { userList = lista, defaultList = defaultList };
             return View(viewmodel);
         }

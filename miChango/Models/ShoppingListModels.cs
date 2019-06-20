@@ -13,6 +13,7 @@ namespace miChango.Models
     public class ShoppingList
     {
         [Key]
+        [Display(Name = "Shopping id")]
         public int Id { get; set; }
         public ICollection<Product> Products { get; set; } = new List<Product>();
     }

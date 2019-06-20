@@ -390,6 +390,7 @@ namespace miChango.Controllers
         // GET: /Account/LogOff
         //[HttpPost]
         //[ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
