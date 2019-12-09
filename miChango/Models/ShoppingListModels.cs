@@ -48,7 +48,8 @@ namespace miChango.Models
 
         public int ShoppingListID { get; set; }
 
-        // aparentemente tiene que tener ShoppingList virtual para relaciones uno a muchos  https://youtu.be/txR3S4zisuw?t=166
+        // aparentemente tiene que tener ShoppingList virtual
+        // para relaciones uno a muchos  https://youtu.be/txR3S4zisuw?t=166
         public virtual ShoppingList ShoppingList { get; set; }
     }
 }

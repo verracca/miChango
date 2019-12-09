@@ -20,7 +20,6 @@ namespace miChango.Controllers
 
         public ListaController()
         {
-            //
             productosfull = new List<Product>();
 
             var productos = new List<string>() {

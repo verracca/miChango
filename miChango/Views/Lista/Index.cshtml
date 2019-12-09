@@ -47,7 +47,7 @@
                                     <!--empieza lista 1-->
                                     @foreach (var item in productosUsuario)
                                     {
-                                        // on click creamos un nuevo producto, le mandamos el nombre y la imagen como parametros
+                                        // on click borramos el producto de la base de datos
                                         <a href="@Url.Action("Delete", "Producto", new { id=item.ProductID })">
                                             <div class="card 2">
                                                 <div class="card_image">
